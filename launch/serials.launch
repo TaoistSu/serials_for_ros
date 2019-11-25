@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <!--node name ="serials" pkg="serials" type="serials"/-->
+  <node name ="serials" pkg="serials" type="serials" output="screen" />
+</launch> 

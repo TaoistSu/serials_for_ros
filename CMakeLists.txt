@@ -116,7 +116,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -188,7 +188,12 @@ include_directories(
 #############
 ## Testing ##
 #############
-
+add_library(serials_h
+	include/serials/serials.h
+	src/serials.cpp
+)
+target_link_libraries(serials_h ${catkin_LIBRARIES})
+add_dependencies(serials_h ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 ## Add gtest based cpp test target and link libraries
 # catkin_add_gtest(${PROJECT_NAME}-test test/test_serials.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
@@ -197,6 +202,8 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+#target_link_libraries(serials serials_h ${catkin_LIBRARIES})
+
 add_executable(serials src/serials.cpp)
 add_dependencies(serials serials_generate_messages_cpp)
 target_link_libraries(serials ${catkin_LIBRARIES})
